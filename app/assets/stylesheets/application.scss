@@ -1,0 +1,15 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$board-blue: #4863a0;
+$text-white: #fff5ee;
+
+.main-board {
+  color: $text-white;
+  background-color: $board-blue;
+}
+
+.board-body {
+  color: $text-white;
+  background-color: $board-blue;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h1 class='text-center'>Paulvital Tracker</h1>
+  </div>
+  <div class="text-center">
+    <ul class="list-group">
+      <% @boards.each do |board| %>
+        <li class="list-group-item"><%= link_to(board.title, board_path(board)) %> </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="row text-center">
+    <%= link_to("Create a New Board", new_board_path,  class:"btn btn-info") %>
+  </div>
+</div>
