@@ -5,7 +5,7 @@
   <div class="text-center">
     <ul class="list-group">
       <% @boards.each do |board| %>
-        <li class="list-group-item"><%= board.title %> </li>
+        <li class="list-group-item"><%= link_to(board.title, board_path(board)) %> </li>
       <% end %>
     </ul>
   </div>
