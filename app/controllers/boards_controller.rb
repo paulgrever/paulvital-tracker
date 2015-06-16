@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  include BoardsHelper
   def index
     @boards = Board.all
   end
