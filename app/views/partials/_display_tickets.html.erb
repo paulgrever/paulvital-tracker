@@ -1,0 +1,48 @@
+  <div class="row board-body">
+    <div class="col-md-3 text-center backlog">
+      <h3>Backlog</h3>
+        <% backlog_tickets.each do |ticket| %>
+          <div class="ticket">
+            <p><strong><%= ticket.title %></strong></p>
+            <p><%= ticket.description %></p>
+            <p><%= ticket.status %>
+            <%= link_to("Progress", ticket_path(:ticket => {:status => "Current Sprint", :id => ticket.id }), method: :PATCH, class:"btn btn-sm btn-info") %>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-md-3 text-center current-sprint">
+      <h3>Current Sprint</h3>
+        <% sprint_tickets.each do |ticket| %>
+          <div class="ticket ">
+            <p><strong><%= ticket.title %></strong></p>
+            <p><%= ticket.description %></p>
+            <p><%= link_to("Backtrack", ticket_path(:ticket => {:status => "Backlog", :id => ticket.id}), method: :PATCH, class:"btn btn-sm btn-danger")%>
+            <%= ticket.status %>
+            <%= link_to("Progress", ticket_path(:ticket => {:status => "In Progress", :id => ticket.id}), method: :PATCH, class:"btn btn-sm btn-info") %></p>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-md-3 text-center in-progress">
+      <h3>In Progress</h3>
+        <% progress_tickets.each do |ticket| %>
+          <div class="ticket ">
+            <p><strong><%= ticket.title %></strong></p>
+            <p><%= ticket.description %></p>
+            <p><%= link_to("Backtrack", ticket_path(:ticket => {:status => "Current Sprint", :id => ticket.id}), method: :PATCH, class:"btn btn-sm btn-danger")%>
+            <%= ticket.status %>
+            <%= link_to("Progress", ticket_path(:ticket => {:status => "Done", :id => ticket.id}), method: :PATCH, class:"btn btn-sm btn-info")%></p>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-md-3 text-center done">
+      <h3>Done</h3>
+        <% done_tickets.each do |ticket| %>
+          <div class="ticket ">
+            <p><strong><%= ticket.title %></strong></p>
+            <p><%= ticket.description %></p>
+            <p><%= link_to("Backtrack", ticket_path(:ticket => {:status => "In Progress", :id => ticket.id}), method: :PATCH, class:"btn btn-sm btn-danger")%>
+            <%= ticket.status %></p>
+          </div>
+        <% end %>
+    </div>
+  </div>
